@@ -2,77 +2,98 @@
 
 ## Project Description
 
-Echo Crystal Cavern is a small fantasy environment created in Unreal Engine 5. The scene focuses on glowing crystal formations, cave surfaces, atmospheric lighting, and environmental shader effects.
+Echo Crystal Cavern is a small fantasy environment created in Unreal Engine 5. The project focuses on creating a visually immersive cave using physically based materials, shaders, lighting, and atmospheric effects. Players explore a hidden cavern illuminated by glowing crystals and surrounded by detailed rock formations.
+
+---
 
 ## Initial Project Setup
 
 1. Created a Blank Unreal Engine 5 project.
-2. Enabled Starter Content.
-3. Created the main crystal cavern level.
-4. Added placeholder cave walls, rocks, lighting, and crystal meshes.
-5. Organized the project into folders:
-   - Materials
-   - Material Instances
-   - Meshes
-   - Textures
-   - Blueprints
-   - Maps
+2. Added Starter Content.
+3. Created the main cave level.
+4. Added placeholder cave meshes and lighting.
+5. Organized project folders for Materials, Meshes, Textures, Blueprints, and Maps.
 6. Initialized Git version control.
-7. Connected the local project to GitHub.
-8. Added an Unreal Engine .gitignore file.
-9. Pushed the initial project setup to the repository.
-10. Added the instructor as a repository collaborator.
+7. Connected the project to GitHub.
+8. Added an Unreal Engine `.gitignore` file.
+9. Pushed the initial project to GitHub.
+10. Added the instructor as a collaborator.
 
-## Topic 2 Shader Development
+---
 
-For this stage of the project, I created a basic glowing crystal shader using the Unreal Engine Material Editor.
+## Topic 2: Basic Shader Creation
+
+For this milestone, I created a custom crystal shader using the Unreal Engine Material Editor.
 
 ### Material Name
 
-M_CrystalGlow
+`M_CrystalGlow`
 
 ### Shader Features
 
-- Adjustable crystal color
-- Emissive glow
-- Fresnel-based edge lighting
-- Adjustable glow intensity
-- Optional pulsing animation
-- Subtle moving surface pattern
+- Adjustable crystal color using a Vector Parameter.
+- Fresnel edge glow effect.
+- Adjustable emissive intensity using a Scalar Parameter.
+- Bright glowing crystal appearance.
 
 ### Shader Creation Process
 
-1. Created a new material named M_CrystalGlow.
-2. Added a Vector Parameter named CrystalColor.
-3. Connected CrystalColor to the Base Color input.
-4. Used a Fresnel node to create stronger lighting around the edges of the crystal.
-5. Multiplied the Fresnel effect by CrystalColor.
-6. Added a Scalar Parameter named GlowIntensity.
-7. Connected the final result to Emissive Color.
-8. Added a Time and Sine node to create a subtle pulsing glow.
-9. Used Texture Coordinate and Panner nodes to create movement across the crystal surface.
-10. Applied the material to a crystal mesh in the scene.
-11. Created a Material Instance for easier customization.
+1. Created a new material named `M_CrystalGlow`.
+2. Added a Vector Parameter named `CrystalColor`.
+3. Connected the color to the Base Color input.
+4. Used a Fresnel node to create edge highlighting.
+5. Multiplied the Fresnel effect with the crystal color.
+6. Added a Scalar Parameter named `GlowIntensity`.
+7. Connected the result to the Emissive Color input.
+8. Applied the material to the crystal meshes in the scene.
 
-## Challenges and Solutions
+### Challenges
 
-One challenge was controlling the brightness of the emissive effect. At first, the crystal appeared either too dark or extremely bright. I solved this by creating a Scalar Parameter for the glow intensity, which allowed me to adjust the brightness more easily.
+One challenge was controlling the brightness of the emissive glow. At first the crystal appeared too bright, making it difficult to see surface details. Creating a GlowIntensity parameter allowed me to easily adjust the brightness until it looked more natural.
 
-Another challenge was making the pulsing effect subtle. The original animation changed too quickly and distracted from the environment. I reduced the Time multiplication value to slow the animation and used a Sine node to create a smoother transition.
+---
 
-I also had to make sure the moving texture effect did not look too fast or repetitive. Lowering the Panner speed helped create a slower and more natural-looking effect.
+## Topic 3: Physically Based Materials (PBR)
 
-## Personal Reflection
+For this milestone, I created a physically based rock material to improve the realism of the cave environment.
 
-Creating this shader helped me better understand how different material nodes work together. Before this assignment, I mainly thought of materials as static textures. I now understand that materials can use mathematical values, parameters, and time-based nodes to create dynamic visual effects.
+### Material Name
 
-The Material Editor made shader creation feel more approachable because I could visually connect nodes and immediately preview the results. This process also taught me the importance of testing small changes instead of adding too many effects at once.
+`M_CaveRock_PBR`
+
+### PBR Textures Used
+
+- Base Color (Albedo)
+- Roughness
+- Normal Map
+- Ambient Occlusion
+
+The rock material uses a Metallic value of 0 because natural stone is not metallic.
+
+### Normal Mapping
+
+A normal map was applied to create the appearance of cracks, bumps, and uneven rock surfaces without increasing the mesh complexity. This added much more detail to the cave walls while maintaining good performance.
+
+### Lighting Improvements
+
+To better showcase the material, I adjusted the cave lighting by placing colored lights near the crystal formations. The lighting highlights the rough stone surfaces and makes the normal map details more visible. These adjustments helped create a more immersive cave atmosphere.
+
+### Challenges
+
+One challenge was understanding how each PBR texture affected the final material. After experimenting with the albedo, roughness, ambient occlusion, and normal maps, I learned how each texture contributes to creating realistic surfaces. I also had to ensure the normal map was imported correctly so Unreal recognized it as a normal map rather than a regular image.
+
+---
+
+## Reflection
+
+Working with shaders and PBR materials helped me better understand how materials are built inside Unreal Engine. Before this project I mainly viewed materials as simple textures, but I now understand how multiple texture maps and material nodes work together to create realistic surfaces. I also became more comfortable using the Material Editor and troubleshooting connections between different nodes.
+
+---
 
 ## Future Plans
 
-- Create additional crystal color variations.
-- Improve the crystal surface texture.
-- Add wet rock materials.
-- Create a reflective cave-water shader.
-- Improve lighting and atmospheric fog.
-- Optimize the materials for performance.
+- Add animated crystal shaders.
+- Improve cave lighting and atmosphere.
+- Create a reflective water material.
+- Add moss and wet rock variations.
+- Continue refining the cave environment for the final project.
